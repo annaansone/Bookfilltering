@@ -25,6 +25,7 @@ var all = items
 
 
 //onclick event for buttons and displaying in HTML div
+//getting all elements
 function allbtn() {
 
 document.getElementById("All").addEventListener("click", all);
@@ -61,3 +62,64 @@ document.getElementById("display").innerHTML = (`${poe.map(item => item.title).j
 //console.log(poe);
 }
 poebtn();
+
+
+//sorting each categorie in alfabetical order by the title
+fic.sort((a, b) => {
+  if(a.title > b.title){
+    return 1
+  } else {
+    return -1
+  }
+});
+
+poe.sort((a, b) => {
+  if(a.title > b.title){
+    return 1
+  } else {
+    return -1
+  }
+});
+
+bio.sort((a, b) => {
+  if(a.title > b.title){
+    return 1
+  } else {
+    return -1
+  }
+});
+
+all.sort((a, b) => {
+  if(a.title > b.title){
+    return 1
+  } else {
+    return -1
+  }
+});
+
+
+//grabbing the author values trough all object
+
+function authorBtn() {
+document.getElementById("authors").addEventListener("click", all)
+document.getElementById("displayAuthors").innerHTML = (`${all.map(item => item.author).join(', ')}`);
+}
+authorBtn();
+
+function poeAut() {
+document.getElementById("poeAut").addEventListener("click", all)
+document.getElementById("displayAuthors").innerHTML = (`${poe.map(item => item.author).join(', ')}`);
+}
+authorBtn();
+
+function ficAut() {
+document.getElementById("ficAut").addEventListener("click", all)
+document.getElementById("displayAuthors").innerHTML = (`${fic.map(item => item.author).join(', ')}`);
+}
+ficAut();
+
+function bioAut() {
+document.getElementById("ficAut").addEventListener("click", all)
+document.getElementById("displayAuthors").innerHTML = (`${bio.map(item => item.author).join(', ')}`);
+}
+bioAut();
