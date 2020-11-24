@@ -10,6 +10,9 @@ var items = [
   {all:"all",genre:"Poetry",title:"Pillow Thoughts" ,author:"Courtney Peppernell"},
 ];
 
+//add default value
+//default:  statemnet ; in swich statement don't forget the break;
+
 //grabbing the values
 var bio = items
 .filter(item => item.genre == "Biography")
@@ -23,13 +26,17 @@ var poe = items
 var all = items
 .filter(item => item.all == "all")
 
+//grabbing the titles
+//title array for biography books
+var bioTitle = bio
+.map(item => item.title)
 
 //onclick event for buttons and displaying in HTML div
 //getting all elements
 function allbtn() {
 
 document.getElementById("All").addEventListener("click", all);
-document.getElementById("display").innerHTML = (`${all.map(item => item.title).join(', ')}`);
+document.getElementById("display").innerHTML = (`${all.map(item => item.title + " by " + item.author).join(', ')}`);
 
 //console.log(all);
 }
@@ -39,7 +46,7 @@ allbtn();
 function biobtn() {
 
 document.getElementById("Biography").addEventListener("click", bio);
-document.getElementById("display").innerHTML = (`${bio.map(item => item.title).join(', ')}`);
+document.getElementById("display").innerHTML = (`${bio.map(item => item.title + " by " + item.author).join(', ')}`);
 
 //console.log(bio);
 }
@@ -48,7 +55,7 @@ biobtn();
 //gets all the elements with fiction genre
 function ficbtn() {
 document.getElementById("Fiction").addEventListener("click", fic);
-document.getElementById("display").innerHTML = (`${fic.map(item => item.title).join(', ')}`);
+document.getElementById("display").innerHTML = (`${fic.map(item => item.title + " by " + item.author).join(', ')}`);
 
 //console.log(fic);
 }
@@ -57,7 +64,7 @@ ficbtn();
 //gets all the elemnts with poetry genre
 function poebtn() {
 document.getElementById("Poetry").addEventListener("click", poe)
-document.getElementById("display").innerHTML = (`${poe.map(item => item.title).join(', ')}`);
+document.getElementById("display").innerHTML = (`${poe.map(item => item.title + " by " + item.author).join(', ')}`);
 //document.getElementById("display").innerHTML = poe;
 //console.log(poe);
 }
@@ -102,24 +109,67 @@ all.sort((a, b) => {
 
 function authorBtn() {
 document.getElementById("authors").addEventListener("click", all)
-document.getElementById("displayAuthors").innerHTML = (`${all.map(item => item.author).join(', ')}`);
+//displaying a-z author + the book title
+//--> + " '" + item.title + "'" <-- refares to adding the title next to author
+document.getElementById("displayAuthors").innerHTML = (`${all.map(item => item.author + " '" + item.title + "'").join(', ')}`);
 }
 authorBtn();
 
+
 function poeAut() {
 document.getElementById("poeAut").addEventListener("click", all)
-document.getElementById("displayAuthors").innerHTML = (`${poe.map(item => item.author).join(', ')}`);
+//displaying a-z author + the book title
+//--> + " '" + item.title + "'" <-- refares to adding the title next to author
+document.getElementById("displayAuthors").innerHTML = (`${poe.map(item => item.author + " '" + item.title + "'").join(', ')}`);
 }
 authorBtn();
 
 function ficAut() {
 document.getElementById("ficAut").addEventListener("click", all)
-document.getElementById("displayAuthors").innerHTML = (`${fic.map(item => item.author).join(', ')}`);
+//displaying a-z author + the book title
+//--> + " '" + item.title + "'" <-- refares to adding the title next to author
+document.getElementById("displayAuthors").innerHTML = (`${fic.map(item => item.author+ " '" + item.title + "'").join(', ')}`);
 }
 ficAut();
 
 function bioAut() {
 document.getElementById("ficAut").addEventListener("click", all)
-document.getElementById("displayAuthors").innerHTML = (`${bio.map(item => item.author).join(', ')}`);
+//displaying a-z author + the book title
+//--> + " '" + item.title + "'" <-- refares to adding the title next to author
+document.getElementById("displayAuthors").innerHTML = (`${bio.map(item => item.author + " '" + item.title + "'").join(', ')}`);
 }
 bioAut();
+
+//author sorting a-z
+
+all.sort((a, b) => {
+  if(a.author > b.author){
+    return 1
+  } else {
+    return -1
+  }
+});
+
+poe.sort((a, b) => {
+  if(a.author > b.author){
+    return 1
+  } else {
+    return -1
+  }
+});
+
+fic.sort((a, b) => {
+  if(a.author > b.author){
+    return 1
+  } else {
+    return -1
+  }
+});
+
+bio.sort((a, b) => {
+  if(a.author > b.author){
+    return 1
+  } else {
+    return -1
+  }
+});
